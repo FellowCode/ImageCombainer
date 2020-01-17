@@ -37,7 +37,10 @@ def combine(key, value, path, mesh_name):
 
 
 def main():
-    input()
+    pass
+
+
+if __name__ == '__main__':
     mesh_name = easygui.enterbox(title='Image combiner', msg='Enter mesh name')
     mesh_name = mesh_name.replace(' ', '_')
 
@@ -67,14 +70,10 @@ def main():
     for key, value in images.items():
         combiner = Process(target=combine, args=(key, value, path, mesh_name))
         combiner.start()
-        #combiner.join()
+        # combiner.join()
         combiners.append(combiner)
 
     for combiner in combiners:
         combiner.join()
 
     easygui.msgbox(title='Image combiner', msg='Complete!')
-
-
-if __name__ == '__main__':
-    main()
